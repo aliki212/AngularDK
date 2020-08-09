@@ -1,0 +1,4 @@
+1) check that we have node                    $ node -v
+2) Input the dependencies from package.json   $ npm install  
+3) $ npm install bootstrap@4.1.1 font-awesome@4.7.0 
+  bootstrap dependencies of jquery@1.9.1 & popper.js@^1.14.3 refer to the interactive features - if we want only styling we dont need them
