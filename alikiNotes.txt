@@ -2,3 +2,16 @@
 2) Input the dependencies from package.json   $ npm install  
 3) $ npm install bootstrap@4.1.1 font-awesome@4.7.0 
   bootstrap dependencies of jquery@1.9.1 & popper.js@^1.14.3 refer to the interactive features - if we want only styling we dont need them
+
+
+  //Initializing SQL tools service for the mssql extension.
+Note: mssql commands will be available after installing the service.
+
+Platform: win32, x86_64 (Windows)
+
+Installing SQL tools service to c:\Users\Ali\.vscode\extensions\ms-mssql.mssql-1.9.0\sqltoolsservice\1.9.0\Windows.
+Downloading https://download.microsoft.com/download/4/1/c/41ceb814-b8d3-4157-9dd0-b4aa0e11484d/microsoft.sqltools.servicelayer-win-x64-netcoreapp2.2.zip
+(45622 KB) .................... Done!
+Installing ...
+Done! 509 files unpacked.
+????////
