@@ -3,7 +3,9 @@ import { IProduct } from './product';
 
 @Component({
   selector: 'pm-products',
-  templateUrl: './product-list.component.html'
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css'],
+  styles: ["td {color:lightcoral;}"]
 })
 
 export class ProductListComponent {
