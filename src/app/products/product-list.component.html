@@ -1,12 +1,13 @@
 <div class="card">
   <div class="card-header">
-    {{pageTitle}}
+    {{'Interpolated Title with string : ' +pageTitle}}
+    <h3 innerText={{pageTitle}}> This Text is negated </h3>
   </div> <!-- end of card header-->
   <div class='card-body'>
     <div class='row'>
       <div class='col-md-2'>Filter by:</div>
       <div class='col-md-4'>
-        <input type='text' />
+        <input [(ngModel)]='listFilter' />
       </div>
     </div>
     <div class='row'>
@@ -16,12 +17,14 @@
     </div>
   </div> <!-- end of card body -->
   <div class='table-responsive'>
-    <table class='table' *ngIf='products && products.length'>
+    <table class='table'
+           *ngIf='products && products.length'>
       <thead>
         <tr>
           <th>
-            <button class='btn btn-primary' (click)='toggleImage()'>
-              Show Image
+            <button class='btn btn-primary'
+                    (click)='toggleImage()'>
+              {{showImage ? 'Hide' : 'Show' }} Image
             </button>
           </th>
           <th>Product</th>
@@ -35,13 +38,16 @@
         <tr *ngFor='let p of products'>
           <td>
             <!-- <img src={{p.imageUrl}} title={{p.productName}}> -->
-            <img *ngIf='showImage' [src]='p.imageUrl' [title]='p.productName' [style.width.px]='imageWidth'
-              [style.margin.px]='imageMargin'>
+            <img *ngIf='showImage'
+                 [src]='p.imageUrl'
+                 [title]='p.productName'
+                 [style.width.px]='imageWidth'
+                 [style.margin.px]='imageMargin'>
           </td>
           <td>{{p.productName}}</td>
           <td>{{p.productCode}}</td>
           <td>{{p.releaseDate}}</td>
-          <td>{{p.price}}</td>
+          <td>{{p.price | currency : 'EUR' : true  }}</td>
           <td>{{p.starRating}}</td>
         </tr>
       </tbody>
