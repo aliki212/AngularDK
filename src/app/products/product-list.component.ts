@@ -8,13 +8,22 @@ import { IProduct } from './product';
   styles: ["td {color:lightcoral;}"]
 })
 
-export class ProductListComponent 
-      implements OnInit{
+export class ProductListComponent
+  implements OnInit {
   pageTitle: string = 'Product List Title';
   imageWidth: number = 50;
   imageMargin: number = 2;
   showImage: boolean = false;
-  listFilter: string = 'cast';
+  // listFilter: string = 'cast';
+  private _listFilter: string;
+  get listFilter(): string {
+    return this._listFilter;
+  }
+  set listFilter(value: string) {
+    // this._listFilter = value;
+    this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
+  }
+  filteredProducts: IProduct[];
   products: IProduct[] = [
     {
       "productId": 1,
@@ -38,11 +47,21 @@ export class ProductListComponent
     }
   ];
 
+  constructor() {
+    this.filteredProducts = this.products;
+    this._listFilter = ' ';
+  }
+  performFilter(filterby: string): IProduct[] {
+    filterby = filterby.toLocaleLowerCase(); // comparing "apples to apples"
+    return this.products.filter((product: IProduct) => //arrow function => filter for each p in products
+      product.productName.toLocaleLowerCase().indexOf(filterby) !== -1); //ie: where indexOf finds a match (Mosh JSIntro 6.3 indexOf() = -1 if no match is found)
+  }
+
   toggleImage(): void {
     this.showImage = !this.showImage
   }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     console.log("OnInit started");
   }
 }
