@@ -1,5 +1,5 @@
 .crop {
-  overflow: hidden;
+  overflow: hidden; /*helps with cropping our stars*/
 }
 div {
   cursor: pointer;

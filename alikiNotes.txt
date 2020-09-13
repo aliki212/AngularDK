@@ -15,3 +15,37 @@ Downloading https://download.microsoft.com/download/4/1/c/41ceb814-b8d3-4157-9dd
 Installing ...
 Done! 509 files unpacked.
 ????////
+
+//CompileOnSave: -false -> true, in tsconfig.json file did not work
+Found this thread:
+https://github.com/microsoft/vscode/issues/13953 where this is interesting:
+''Something I didn't realize was that it's possible to do this with the Tasks infrastructure that VSCode has. All you have to do is put this into your tasks.json:
+
+{
+  "version": "0.1.0",
+  "command": "tsc",
+  "isShellCommand": true,
+  "args": ["-w", "-p", "."],
+  "showOutput": "silent",
+  "isBackground": true,
+  "problemMatcher": "$tsc-watch"
+}
+Then just run it and you'll get all of the errors across your entire project in the problems view.
+I'm a bit perplexed why this isn't displayed more prominently. It's super useful and cool.
+'' johnfn's reply
+//next reply:
+@johnfn Great solution, thanks a lot. I would even add the "--noEmit" argument if the sole purpose of the task is to show the errors
+
+{
+  "version": "0.1.0",
+  "command": "tsc",
+  "isShellCommand": true,
+  "args": ["-w", "-p", ".", "--noEmit"],
+  "showOutput": "silent",
+  "isBackground": true,
+  "problemMatcher": "$tsc-watch"
+}
+// - while most links posted for solution of tds -w : made typescript to watch for changes in files ie:on save
+// another option is to dig in the new Ahead Of Time Compilation mode of Angular
+https://angular.io/guide/typescript-configuration
+--remember that the tsconfig.json file extends in the e2e/tsconfig.json file as well (more setttings there)
