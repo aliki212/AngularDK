@@ -51,7 +51,8 @@
           <td>{{p.releaseDate}}</td>
           <td>{{p.price | currency : 'EUR' : true  }}</td>
           <td>
-            <pm-stars [rating]='p.starRating'></pm-stars>
+            <pm-stars [rating]='p.starRating'
+            (ratingClicked)="onRatingClicked($event)"></pm-stars>
           </td>
           <!-- <td>{{p.starRating}}</td> -->
         </tr>
