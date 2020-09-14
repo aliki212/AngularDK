@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
-
+import { ProductService } from './product.service'
 @Component({
   selector: 'pm-products',
   templateUrl: './product-list.component.html',
@@ -47,8 +47,8 @@ export class ProductListComponent implements OnInit {
     }
   ];
 
-  constructor() {
-    this.filteredProducts = this.products;
+  constructor(private productService: ProductService) {
+
     this._listFilter = ' ';
   }
 
@@ -68,6 +68,8 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("OnInit started");
+    this.products = this.productService.getProducts();
+    this.filteredProducts = this.products;
   }
 
 }
