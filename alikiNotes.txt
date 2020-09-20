@@ -49,3 +49,4 @@ I'm a bit perplexed why this isn't displayed more prominently. It's super useful
 // another option is to dig in the new Ahead Of Time Compilation mode of Angular
 https://angular.io/guide/typescript-configuration
 --remember that the tsconfig.json file extends in the e2e/tsconfig.json file as well (more setttings there)
+  /* <pm-products></pm-products>*/
