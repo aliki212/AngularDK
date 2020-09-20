@@ -18,6 +18,7 @@ export class ProductListComponent implements OnInit {
   // listFilter: string = 'cast';
   private _listFilter: string;
   //_listFilter = '';
+  errorMessage: string;
   get listFilter(): string {
     return this._listFilter;
   }
@@ -47,8 +48,12 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("OnInit started");
-    this.products = this.productService.getProducts();
-    this.filteredProducts = this.products;
+    this.productService.getProducts().subscribe({
+      next: products => {this.products = products;
+        this.filteredProducts = this.products;
+      },
+      error: err => this.errorMessage = err
+    });
     this._listFilter = ' ';
   }
 
