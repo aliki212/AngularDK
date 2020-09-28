@@ -29,7 +29,7 @@ import { WelcomeComponent } from './home/welcome.component';
       { path: 'products', component: ProductListComponent },
       { path: 'products/:id', component: ProductDetailComponent },
       { path: 'welcome', component: WelcomeComponent },
-      { path: '', redirectTo: 'weclome', pathMatch: 'full' }
+      { path: '', redirectTo: 'welcome', pathMatch: 'full' }
     ])
   ],
   bootstrap: [AppComponent]
