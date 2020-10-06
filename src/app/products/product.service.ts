@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { IProduct } from './product';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { ERROR_COMPONENT_TYPE } from '@angular/compiler';
+import { catchError, tap, map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,13 @@ export class ProductService {
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
+  }
+  //Lessons Solution - made my own in product-detail.component.ts 
+  getProduct(id: number): Observable<IProduct | undefined> {
+    return this.getProducts()
+      .pipe(
+        map((products: IProduct[]) => products.find(p => p.productId === id))
+      );
   }
 
   private handleError(err: HttpErrorResponse) {

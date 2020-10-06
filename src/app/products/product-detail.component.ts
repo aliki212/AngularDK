@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from './product.service';
 
 @Component({
   // selector: 'pm-product-detail',
@@ -10,24 +11,35 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailComponent implements OnInit {
   pageTitle: string = "Product Detail";
   product: IProduct;
-  constructor(private route: ActivatedRoute) {
+  imageWidth: number = 250;
+  imageMargin: number = 2;
+  errorMessage: string;
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private productService: ProductService) {
     //console.log(this.route.snapshot.paramMap.get('id'));
   }
 
 
   ngOnInit(): void {
+    //Lessons solution - has the undefined clause as well - more secure
+    // const param = this.route.snapshot.paramMap.get('id');
+    // getProduct(id: number): void {
+    //   this.productService.getProduct(id).subscribe({
+    //     next: product => this.product = product,
+    //     error: err => this.errorMessage = err
+    //   });
     let id = +this.route.snapshot.paramMap.get('id');
     this.pageTitle += `: ${id}`;
-    this.product = {
-      "productId": id,
-      "productName": "Video Game Controller",
-      "productCode": "GMG-0042",
-      "releaseDate": "October 15, 2018",
-      "description": "Standard two-button video game controller",
-      "price": 35.95,
-      "starRating": 4.6,
-      "imageUrl": "assets/images/xbox-controller.png"
-    }
+    this.productService.getProducts().subscribe({
+      next: products => {
+        this.product = products.find(p => p.productId === id);
+      },
+      error: err => this.errorMessage = err
+    });
+    console.log(this.product);
   }
-
+  onBack(): void {
+    this.router.navigate(['/products']);
+  }
 }

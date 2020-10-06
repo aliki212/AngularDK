@@ -1,5 +1,31 @@
-<div class='card' *ngIf='product !=null'>
-  <div class='card-header'>
-    {{pageTitle + ': ' + product?.productName}}
+<div class='col-md-8'>
+  <div class='card'
+       *ngIf='product !=null'>
+    <div class='card-header'>
+      {{pageTitle + ': ' + product?.productName}}
+    </div>
+    <table>
+      <tr>
+        <th rowspan="5"><img [src]='product.imageUrl'
+               [title]='product.productName'
+               [style.width.px]='imageWidth'
+               [style.margin.px]='imageMargin'></th>
+        <th><b>{{product.productName}}</b></th>
+      </tr>
+      <tr>
+        <td>{{product.productCode | uppercase | convertToSpace :'-' }}</td>
+      </tr>
+      <tr>
+        <td>{{product.releaseDate}}</td>
+      </tr>
+      <tr>
+        <td>{{product.price | currency : 'EUR' : true  }}</td>
+      </tr>
+    </table>
+    <button>
+      <a class='btn'
+         (click)='onBack()'
+         style='width:80px'>Back</a>
+    </button>
   </div>
 </div>
