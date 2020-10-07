@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 
 
-export class convertToSpacePipe
+export class ConvertToSpacePipe
   implements PipeTransform {
   transform(v: string, ch: string): string {
     return v.replace(ch, ' ');
