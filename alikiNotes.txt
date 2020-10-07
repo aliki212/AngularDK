@@ -1,3 +1,21 @@
+Angular CLI -12.5 Route Guards
+-----------
+ng g g products/products-detail
+--angular generate guard path/name
+
+--Shows 3 choices - press space to select one or more:
+>(*) CanActivate
+ ( ) CanActivateChild
+ ( ) CanDeactivate
+ ( ) CanLoad
+
+--& creates the guards:
+CREATE src/app/products/product-detail.guard.spec.ts (377 bytes) --unit test file for the guard
+CREATE src/app/products/product-detail.guard.ts (465 bytes)
+
+
+
+ --------------------------How to start the lesson's project-----------------------
 1) check that we have node                    $ node -v
 2) Input the dependencies from package.json   $ npm install  
 3) $ npm install bootstrap@4.1.1 font-awesome@4.7.0 
@@ -50,3 +68,5 @@ I'm a bit perplexed why this isn't displayed more prominently. It's super useful
 https://angular.io/guide/typescript-configuration
 --remember that the tsconfig.json file extends in the e2e/tsconfig.json file as well (more setttings there)
   /* <pm-products></pm-products>*/
+
+  
