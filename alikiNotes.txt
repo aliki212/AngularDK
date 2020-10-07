@@ -13,7 +13,7 @@ ng g g products/products-detail
 CREATE src/app/products/product-detail.guard.spec.ts (377 bytes) --unit test file for the guard
 CREATE src/app/products/product-detail.guard.ts (465 bytes)
 
---create a feature module
+----Create a feature module
 $ ng g m products/product 
 --angular generate module folder/nameOfNewModule
 --but if the folder exists create it with --flat ie.no folder creation needed
@@ -24,6 +24,14 @@ $ ng g m products/product --flat -m app
 --result
 CREATE src/app/products/product.module.ts (193 bytes)
 UPDATE src/app/app.module.ts (1420 bytes)
+
+--Create a shared module
+$ ng g m shared/shared --flat -m products/product.module
+--where products/product.module is the location of the importing module
+--result:
+CREATE src/app/shared/shared.module.ts (192 bytes)
+UPDATE src/app/products/product.module.ts (1016 bytes)
+
  --------------------------How to start the lesson's project-----------------------
 1) check that we have node                    $ node -v
 2) Input the dependencies from package.json   $ npm install  
